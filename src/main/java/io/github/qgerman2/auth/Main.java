@@ -1,6 +1,5 @@
 package io.github.qgerman2.auth;
 
-import org.bukkit.entity.ArmorStand;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
@@ -10,6 +9,7 @@ public class Main extends JavaPlugin {
         Database.initialize(this);
         Spawn.initialize(this);
         EventListener.initialize(this);
+        PlayerList.initialize();
         getServer().getPluginManager().registerEvents(new EventListener(), this);
         getLogger().info("Auth plugin! mailtoken-mc");
     }
