@@ -30,6 +30,6 @@ public class EventListener implements Listener {
     }
 
     private static void onClientPacket(PacketEvent event) {
-
+        Spawn.onClientPacket(event);
     }
 }

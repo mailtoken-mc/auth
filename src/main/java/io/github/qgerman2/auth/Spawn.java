@@ -1,5 +1,7 @@
 package io.github.qgerman2.auth;
 
+import com.comphenix.protocol.PacketType;
+import com.comphenix.protocol.events.PacketEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.ArmorStand;
@@ -18,5 +20,12 @@ public class Spawn {
     }
     public static void onPlayerJoin(PlayerJoinEvent event) {
         event.getPlayer().setSpectatorTarget(stand);
+    }
+    public static void onClientPacket(PacketEvent event) {
+        //Stop player from dismounting the armor stand
+        if (event.getPacket().getType() == PacketType.Play.Client.ENTITY_ACTION
+        ||  event.getPacket().getType() == PacketType.Play.Client.USE_ENTITY) {
+            event.setCancelled(true);
+        }
     }
 }
