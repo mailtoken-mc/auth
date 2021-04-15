@@ -1,42 +1,35 @@
 package io.github.qgerman2.auth;
 
-import io.r2dbc.pool.ConnectionPool;
-import io.r2dbc.pool.ConnectionPoolConfiguration;
 import io.r2dbc.spi.Connection;
+import io.r2dbc.spi.Statement;
 import org.bukkit.Bukkit;
+import org.bukkit.plugin.java.JavaPlugin;
 import org.mariadb.r2dbc.MariadbConnectionConfiguration;
 import org.mariadb.r2dbc.MariadbConnectionFactory;
+import reactor.core.publisher.Mono;
 
-import java.time.Duration;
+import java.util.Map;
 
 public class Database {
-    private static ConnectionPool pool;
-    public static void test() {
-        try {
-            Connection conn = pool.create().block();
-            Bukkit.getLogger().info("conectao a sql");
-            conn.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    private static JavaPlugin Plugin;
+    private static MariadbConnectionFactory connFactory;
+    public static void initialize(JavaPlugin Plugin) {
+        Database.Plugin = Plugin;
+        connect();
     }
-    public static void initConnectionFactory() {
+    private static void connect() {
         try {
+            Map<String, Object> dbConf = Config.getDatabase();
             MariadbConnectionConfiguration conf =
                     MariadbConnectionConfiguration.builder()
-                            .host("localhost")
-                            .port(3306)
-                            .username("paper")
-                            .password("miau")
-                            .database("serevr")
+                            .host((String) dbConf.get("host"))
+                            .port((Integer) dbConf.get("port"))
+                            .username((String) dbConf.get("user"))
+                            .password((String) dbConf.get("pass"))
+                            .database((String) dbConf.get("name"))
                             .build();
-            MariadbConnectionFactory connFactory = new MariadbConnectionFactory(conf);
-            ConnectionPoolConfiguration confPool = ConnectionPoolConfiguration
-                    .builder(connFactory)
-                    .maxIdleTime(Duration.ofMillis(1000))
-                    .maxSize(20)
-                    .build();
-            pool = new ConnectionPool(confPool);
+            connFactory = new MariadbConnectionFactory(conf);
+            Bukkit.getLogger().info("conectao a sql");
         } catch (Exception e) {
             e.printStackTrace();
         }
