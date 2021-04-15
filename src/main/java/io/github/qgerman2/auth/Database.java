@@ -29,9 +29,10 @@ public class Database {
                             .database((String) dbConf.get("name"))
                             .build();
             connFactory = new MariadbConnectionFactory(conf);
-            Bukkit.getLogger().info("conectao a sql");
+            Plugin.getLogger().info("Successfully connected to database server");
         } catch (Exception e) {
             e.printStackTrace();
+            Plugin.getLogger().info("Failed to connect to database server");
         }
     }
 }

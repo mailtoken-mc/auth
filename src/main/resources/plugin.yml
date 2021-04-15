@@ -1,3 +1,4 @@
 name: auth
 version: 1.0
 main: io.github.qgerman2.auth.Main
+depend: [ProtocolLib]
