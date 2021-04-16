@@ -13,7 +13,7 @@ public class Config {
         Plugin.saveDefaultConfig();
         config = Plugin.getConfig();
     }
-    public static Map<String, Object> getDatabase() {
+    public static Map<String, Object> getDB() {
         return config.getConfigurationSection("db").getValues(false);
     }
 }

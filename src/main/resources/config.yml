@@ -1,6 +1,4 @@
 db:
-  host: localhost
-  port: 3306
-  name: serevr
-  user: paper
-  pass: miau
+  name: dbname
+  user: dbuser
+  pass: dbpass

@@ -22,7 +22,7 @@
                 <version>3.2.0</version>
                 <configuration>
                     <forceCreation>true</forceCreation>
-                    <outputDirectory>../../server/auth/plugins</outputDirectory>
+                    <outputDirectory>output</outputDirectory>
                 </configuration>
             </plugin>
             <plugin>

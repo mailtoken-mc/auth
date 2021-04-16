@@ -21,7 +21,8 @@ public class Database {
             public void run() {
                 try {
                     Class.forName("org.mariadb.jdbc.Driver");
-                    conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/serevr", "paper", "miau");
+                    conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/" + Config.getDB().get("name"),
+                            Config.getDB().get("user").toString(), Config.getDB().get("pass").toString());
                     Plugin.getLogger().info("Successfully connected to database server");
                 } catch (SQLException | ClassNotFoundException throwables) {
                     throwables.printStackTrace();
