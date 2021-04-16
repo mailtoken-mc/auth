@@ -8,4 +8,4 @@ After a successful login it pings BungeeCord (Waterfall) to send the player to t
 
 The database can be set up with the 'chair' node server on the mailtoken-mc github.
 
-Configure plugins/auth/config.yml with your database account credentials
+Configure **plugins/auth/config.yml** with your database account credentials
