@@ -1,4 +1,15 @@
 name: auth
 version: 1.0
+api-version: 1.16
 main: io.github.qgerman2.auth.Main
 depend: [ProtocolLib]
+commands:
+  ingresar:
+    description: Ingresar clave de la cuenta
+    usage: /ingresar <clave>
+  registrar:
+    description: Registrar una nueva clave
+    usage: /registrar <nueva clave> <confirmar clave>
+  clave:
+    description: Verificar clave única
+    usage: /clave <clave unica>

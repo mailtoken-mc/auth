@@ -28,10 +28,12 @@ public class EventListener implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         PlayerList.onPlayerJoin(event.getPlayer());
         Spawn.onPlayerJoin(event);
+        Auth.onPlayerJoin(event);
     }
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
         PlayerList.onPlayerQuit(event.getPlayer());
+        Auth.onPlayerQuit(event.getPlayer().getName());
     }
     private static void onClientPacket(PacketEvent event) {
         Spawn.onClientPacket(event);
