@@ -108,7 +108,7 @@ public class Database {
                     stmnt.setString(2, DigestUtils.sha256Hex(pass));
                     ResultSet result = stmnt.executeQuery();
                     if (result.next()) {
-                        Auth.successfulLogin(playerName);
+                        Auth.successfulLogin(playerName, pass);
                     } else {
                         Auth.failedLogin(playerName);
                     }

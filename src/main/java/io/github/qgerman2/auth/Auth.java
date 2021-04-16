@@ -121,11 +121,12 @@ public class Auth {
         player.sendMessage(ChatColor.RED + "La contraseña es incorrecta");
     }
     //Login successful, ask for waterfall to teleport to main server
-    public static void successfulLogin(String playerName) {
+    public static void successfulLogin(String playerName, String pass) {
         Player player = Plugin.getServer().getPlayer(playerName);
         loginPlayers.set().remove(playerName);
         assert player != null;
-        player.sendMessage("Tamo");
+        //Ping BungeeCord
+        Main.sendToBungeeCord(player, pass);
     }
     //Remove entries if player quits
     public static void onPlayerQuit(String playerName) {
